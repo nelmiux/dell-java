@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Set;
 
 public class Game {
-	private static final char[] options = new char[] {'r', 'p', 's'}; 
+	private static final char[] options = {'r', 'p', 's'}; 
 	private static final Set<String> winningMoves = new HashSet<String>(Arrays.asList(new String[] {"pr","sp","rs"}));
 	private char pcOption;
 	private char userOption;
