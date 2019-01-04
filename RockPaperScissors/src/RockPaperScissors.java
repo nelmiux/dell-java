@@ -16,6 +16,8 @@ public class RockPaperScissors {
         result.put(new Character('s'), "Scissors");
         return Collections.unmodifiableMap(result);
     }
+    
+    private static Scanner reader = new Scanner(System.in);
 	
 	public static void main(String[] args) {
 		boolean play = true;
@@ -44,7 +46,9 @@ public class RockPaperScissors {
 			    
 		} while (play);
 		
-		 System.exit(0);
+		reader.close();
+		
+		System.exit(0);
 	}
 	
 	private static String readUserOption() {
@@ -54,8 +58,8 @@ public class RockPaperScissors {
 		}
 		options = options.replaceAll(", $", "");
 		System.out.print("Enter your option " + options + ": ");
-		Scanner reader = new Scanner(System.in);
-		return reader.next();
+		String userOption = reader.nextLine();
+		return userOption;
 	}
 	
 	private static char getValidOption(String longUserOption) {
@@ -71,10 +75,10 @@ public class RockPaperScissors {
 	private static boolean isPlayAgain() {
 		boolean valid = false;
 		boolean play = false;
+		
 		do {
-			System.out.print("Would you like to play again y/n? ");
-			Scanner reader = new Scanner(System.in);
-			String userOptionPlayAgain = reader.next();
+			System.out.println("Would you like to play again y/n? ");
+			String userOptionPlayAgain = reader.nextLine();
 			System.out.println();
 
 			if(userOptionPlayAgain.equalsIgnoreCase("y") || userOptionPlayAgain.equalsIgnoreCase("yes")) {

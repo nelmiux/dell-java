@@ -18,5 +18,6 @@ public class Main {
         } finally {
     		reader.close();
         }
+	    System.exit(0);
 	}
 }
