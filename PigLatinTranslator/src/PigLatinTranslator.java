@@ -15,7 +15,7 @@ public class PigLatinTranslator {
 			resultSentence += " " + translator.translate(validWord(splittedSentence[i]));
 		}
 		
-		System.out.print("Translated sentence:" + resultSentence);
+		System.out.println("Translated sentence:" + resultSentence);
 		
 		reader.close();
 	}
