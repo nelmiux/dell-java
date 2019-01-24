@@ -11,7 +11,7 @@ public class LicenseProgram {
 			new DriversLicense("Ada", "Lovelace", "12/10/1815", 6.2, 'F')
 		};
 	
-	public static void main(String[] args) throws ClassNotFoundException {
+	public static void main(String[] args) {
 	    
 		/**
 		 * 	Loop through the driversLicenses list and
