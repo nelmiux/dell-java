@@ -34,6 +34,7 @@ public class GarageManager {
 	public static void main(String[] args) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		String invalidSpotMessage = "Index out of bound, this parking spot does not exist";
 		
+		// Parking random cars on ParkingGarage
 		System.out.println("Parking!");
 		for (int i = 0; i < parkingGarages.length; ++i) {
 			// Generate random cars from carsList to park on parking garages
@@ -50,6 +51,7 @@ public class GarageManager {
 		    parkingGarages[i].printInventory();
 		}
 		
+		// Vacating all cars from ParkingGarage
 		System.out.println("Vacating!");
 		for (int i = 0; i < parkingGarages.length; ++i) {
 			for (int j = 0; j < parkingGarages[i].getCapacity(); ++j) {
