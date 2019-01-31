@@ -14,7 +14,7 @@ public class LicenseProgram {
 	public static void main(String[] args) {
 	    
 		/**
-		 * 	Loop through the driversLicenses list and
+		 * 	Loop through the driversLicense list and
 		 *  print FullName and Age of each driver license 
 		 */
 		for (int i = 0; i < driversLicenses.length; ++i)
