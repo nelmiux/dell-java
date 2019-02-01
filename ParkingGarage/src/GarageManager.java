@@ -34,35 +34,39 @@ public class GarageManager {
 	public static void main(String[] args) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		String invalidSpotMessage = "Index out of bound, this parking spot does not exist";
 		
-		// Parking random cars on ParkingGarage
-		System.out.println("Parking!");
-		for (int i = 0; i < parkingGarages.length; ++i) {
-			// Generate random cars from carsList to park on parking garages
-			Random randNumGenerator = new Random();
-		    int randomCarListIndex = randNumGenerator.nextInt(carsList.length);
-		    for (int j = 0; j < parkingGarages[i].getCapacity(); ++j) {
-		    	Boolean validPark = parkingGarages[i].park(carsList[randomCarListIndex], j);
-		    	if (validPark == null)
-		    		System.out.println("The spot you are trying to park is not empty");
-		    	if (!validPark)
-		    		System.out.println(invalidSpotMessage);
-		    }
-		    
-		    parkingGarages[i].printInventory();
-		}
-		
-		// Vacating all cars from ParkingGarage
-		System.out.println("Vacating!");
-		for (int i = 0; i < parkingGarages.length; ++i) {
-			for (int j = 0; j < parkingGarages[i].getCapacity(); ++j) {
-		    	Boolean validVacate = parkingGarages[i].vacate(j);
-		    	if (validVacate == null)
-		    		System.out.println("The spot you are trying to vacate is already empty");
-		    	if (!validVacate)
-		    		System.out.println(invalidSpotMessage);
-		    }
-		    
-		    parkingGarages[i].printInventory();
+		try {
+			// Parking random cars on ParkingGarage
+			System.out.println("Parking!");
+			for (int i = 0; i < parkingGarages.length; ++i) {
+				// Generate random cars from carsList to park on parking garages
+				Random randNumGenerator = new Random();
+			    int randomCarListIndex = randNumGenerator.nextInt(carsList.length);
+			    for (int j = 0; j < parkingGarages[i].getCapacity(); ++j) {
+			    	Boolean validPark = parkingGarages[i].park(carsList[randomCarListIndex], j);
+			    	if (validPark == null)
+			    		System.out.println("The spot you are trying to park is not empty");
+			    	if (!validPark)
+			    		System.out.println(invalidSpotMessage);
+			    }
+			    
+			    parkingGarages[i].printInventory();
+			}
+			
+			// Vacating all cars from ParkingGarage
+			System.out.println("Vacating!");
+			for (int i = 0; i < parkingGarages.length; ++i) {
+				for (int j = 0; j < parkingGarages[i].getCapacity(); ++j) {
+			    	Boolean validVacate = parkingGarages[i].vacate(j);
+			    	if (validVacate == null)
+			    		System.out.println("The spot you are trying to vacate is already empty");
+			    	if (!validVacate)
+			    		System.out.println(invalidSpotMessage);
+			    }
+			    
+			    parkingGarages[i].printInventory();
+			}
+		} catch(Error e) {
+			System.out.println(e.getMessage());
 		}
 	}
 }
