@@ -127,7 +127,7 @@ public class Controller {
         String projectName = null;
         
         for (String actionPart: actionParts) {
-        	if (actionParts.length > 1 && !actionPart.toLowerCase().contains("project") && !actionPart.contains("-a")) 
+        	if (!actionPart.equals("list") && !actionPart.equalsIgnoreCase("project") && !actionPart.equals("-a")) 
         		throw new IllegalArgumentException("Invalid Entry");
         	
         	if (actionPart.toLowerCase().contains("project")) {
