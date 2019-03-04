@@ -28,11 +28,15 @@ public class WordGuessGame {
 			setCharIndexs();
 			outWord = originalWord.replaceAll(".", "-");
 			boolean invalid =  false;
+			boolean isLost = false;
+			int strikesCount = 0;
 			String input;
+			printStartMessage();
 			do {
 				do {
-					printOutWord();
+					printOutWord(strikesCount);
 					input = inputLetter();
+					invalid =  false;
 					if (input.length() > 1 || !Character.isLetter(input.charAt(0))) {
 						printInvalidEntry();
 						invalid = true;
@@ -44,9 +48,16 @@ public class WordGuessGame {
 					for (int index: charIndexes.get(inputChar))
 						outWordChars[index] = inputChar;
 					outWord = String.valueOf(outWordChars);
+				} else {
+					printStrikeLetterMessage(inputChar);
+					++strikesCount;
 				}
-			} while (outWord.contains("-"));
-			printEndMessage();
+			} while (outWord.contains("-") && strikesCount < 11);
+			if (strikesCount > 10) {
+				printLostMessage();
+				return;
+			}
+			printWinMessage();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -81,10 +92,27 @@ public class WordGuessGame {
 	}
 	
 	/**
+	 * Print to console the welcome message
+	 */
+	private static void printStartMessage() {
+		System.out.println("You got 10 strikes");
+	}
+	
+	/**
 	 * Print to console the current guessed word
 	 */
-	private static void printOutWord() {
+	private static void printOutWord(int strikesCount) {
+		int left = 10 - strikesCount;
+		System.out.println();
+		System.out.println("You got " + left + " strikes left");	
 		System.out.println("The guessed word is " + outWord);
+	}
+	
+	/**
+	 * Print to console the strike letter
+	 */
+	private static void printStrikeLetterMessage(Character strikeLetter) {
+		System.out.println(strikeLetter.toString() + " is not on the word");
 	}
 	
 	/**
@@ -110,8 +138,16 @@ public class WordGuessGame {
 	 * Print to console the final message after the word was 
 	 * finally completely guessed
 	 */
-	private static void printEndMessage() {
+	private static void printWinMessage() {
 		System.out.println();
-		System.out.println("You nailed it, the word is " + outWord);
+		System.out.println("You nailed it, the word is " + originalWord);
+	}
+	
+	/**
+	 * Print to console the final message after the user lost 
+	 */
+	private static void printLostMessage() {
+		System.out.println();
+		System.out.println("You lost, the word is " + originalWord);
 	}
 }
